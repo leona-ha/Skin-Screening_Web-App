@@ -1,0 +1,5 @@
+# Don't upload the images
+*.jpg
+*.jpeg
+
+.DS_Store
