@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="static/data.css" >
+
+
+    <title>Movie Recommender!</title>
+  </head>
+
+  <body>
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-10 col-xl-9 mx-auto">
+            <div class="card card-signin flex-row my-5 resultbox">
+              <div class="card-img-left d-none d-md-flex">
+                 <!-- Background image for card set in CSS! -->
+              </div>
+              <div class="card-body">
+                <h3 class="card-title text-center font-weight-normal text-secondary">Our Recommendation: </h3>
+                <h4 class="text-center">{{ data }}</h4>
+                <br> <br> <hr>
+                <div class="col text-center">
+                <form action="/">
+                  <button class="btn btn-lg btn-outline-info btn-block text-uppercase" type="submit">Enter New Movies</button>
+                </form>
+                <br>
+                <form action="/train">
+                  <button class="btn btn-lg btn-outline-success btn-block text-uppercase" type="submit">Retrain My Model</button>
+                </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </body>
+</html>
