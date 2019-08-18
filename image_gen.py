@@ -4,12 +4,6 @@ def get_input(path):
     img_array = np.expand_dims(img_array, axis=0)
     return(img_array)
 
-def get_dem_input(i):
-    age = batch.loc[i].age
-    sex = batch.loc[i].sex
-    input2 = np.append(age,sex)
-    return(input2)
-
 def preprocess_input(img):
     """ Same preprocessing function as mobilenets preprocess input"""
     img /= 255.
@@ -35,10 +29,10 @@ def image_generator(df, batch_size, source_dir):
 
             full_path = source_dir + str(batch.loc[i].dx) + "/" + str(batch.loc[i].aug_id)
             input1 = get_input(full_path)
-            input2 = get_dem_input(i)
+            input2 = [batch.loc[i].age, batch.loc[i].sex]
             output = batch.loc[i].dx
 
-            input = preprocess_input(image=input1)
+            input = preprocess_input(input1)
             batch_input1 += [ input1 ]
             batch_input2 += [ input2 ]
             batch_output += [ output ]
