@@ -1,9 +1,10 @@
+# Binarize categorical labels (necessary for MobileNet())
 lb = LabelBinarizer()
 lb.fit(train_pr.dx)
 
 def get_input(path):
-    img = image.load_img(path, target_size=(224, 224))
-    img_array = image.img_to_array(img)
+    img = load_img(path, target_size=(224, 224))
+    img_array = img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0)
     return(img_array)
 
