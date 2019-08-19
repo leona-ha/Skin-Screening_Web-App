@@ -1,6 +1,6 @@
 const IMAGENET_CLASSES = {
   0: 'akiec',
-  1: 'bbc',
+  1: 'bcc',
   2: 'bkl',
   3: 'df',
   4: 'mel',

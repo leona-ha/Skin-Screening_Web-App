@@ -12,8 +12,10 @@ async function loadModel() {
 
 async function upload() {
 	console.log("Uploading")
-	document.getElementById("predict-box").display = "none"
-  	document.getElementById("test-image-box").style.display = "block";
+	document.getElementById("predict-box").style.display = "none"
+	document.getElementById("prediction").style.display = "none"
+	document.getElementById("output-row").style.display = "";
+	document.getElementById("test-image-box").style.display = "block";
     renderImage(document.getElementById("select-file-image").files[0]);
 }
 
@@ -24,6 +26,12 @@ function renderImage(file) {
     document.getElementById("test-image").src = img_url;
   }
   reader.readAsDataURL(file);
+}
+
+function startLoader() {
+	const loader = document.getElementById("progress-prediction")
+	loader.style.display = "block"
+	console.log(loader)
 }
 
 async function predict() {
@@ -46,9 +54,7 @@ async function predict() {
 		return
 	}
 
-	loader = document.getElementById("progress-box-prediction")
-	loader.style.display = "block"
-	console.log(loader.style)
+
 
 	const scaledAge = Math.round(age/85 * 100) / 100
 	console.log(scaledAge)
@@ -73,7 +79,7 @@ async function predict() {
 	let results = Array.from(predictions)
 		.map(function (p, i) {
 			return {
-				probability: p,
+				probability: (p*100).toFixed(2),
 				className: IMAGENET_CLASSES[i]
 			};
 		}).sort(function (a, b) {
@@ -81,17 +87,18 @@ async function predict() {
 		}).slice(0, 5)
 
 	document.getElementById("predict-box").style.display = "block";
-	document.getElementById("prediction").innerHTML = "Prediction: <b>" + results[0].className + "</b> " + (results[0].probability*100).toFixed(2) ;
+	document.getElementById("prediction").style.display = "";
+	document.getElementById("prediction").innerHTML = "Prediction: <b>" + results[0].className + "</b> " + results[0].probability + "%"
 
 	var ul = document.getElementById("predict-list");
 	ul.innerHTML = "";
 	results.forEach(function (p) {
 		var li = document.createElement("LI");
-		li.innerHTML = p.className + " " + p.probability.toFixed(6);
+		li.innerHTML = p.className + " " + p.probability + "%";
 		ul.appendChild(li);
 	});
 	console.log("prediction done")
-	loader.style.display = "none"
+	document.getElementById("progress-prediction").style.display = "none"
 }
 
 function preprocessImage(image) {
