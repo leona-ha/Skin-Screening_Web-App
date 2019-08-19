@@ -1,4 +1,3 @@
-# Binarize categorical labels (necessary for MobileNet())
 lb = LabelBinarizer()
 lb.fit(train_pr.dx)
 
@@ -15,13 +14,19 @@ def preprocess_input(img):
     img *= 2.
     return img
 
-def multi_input_generator(df, batch_size, source_dir):
+def multi_input_generator(df, batch_size, source_dir,shuffle=True):
     """Read images and metadata from dataframe.
     Arguments:
-    - source_dir = either train or validation directory"""
+    - source_dir = either train or validation diectory
+    -> important: for test batches set shuffle=False and batch_size=1"""
+
+    idx = 0
 
     while True:
-        batch = df.sample(n=batch_size, replace=False)
+        if shuffle:
+            batch = df.sample(n=batch_size, replace=False)
+        else:
+            batch = df.loc[idx:(idx*batch_size), :] #attention:works only with batch_size=1
 
         batch_input1 = []
         batch_input2 = []
@@ -40,7 +45,7 @@ def multi_input_generator(df, batch_size, source_dir):
             batch_input2 += [ input2 ]
             batch_output += [ output ]
 
-        # flatten the image list so that it fits the tensorflow iterator
+        # flatten the image list so that it looks like the tensorflow iterator
         batch_input1 = [val for sublist in batch_input1 for val in sublist]
 
         # Return a tuple of ([input,input],output) to feed the network
@@ -49,3 +54,7 @@ def multi_input_generator(df, batch_size, source_dir):
         batch_y = lb.transform(np.array(batch_output)).astype("float32")
 
         yield[batch_x1, batch_x2], batch_y
+        idx += 1
+
+        if idx >= len(df):
+                break

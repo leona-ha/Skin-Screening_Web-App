@@ -1,23 +1,14 @@
-from flask import Flask
-from flask import render_template, request
-from recommender import get_ml_recommendations, retrain_nmf
-
+from flask import Flask, request, render_template, json, jsonify, send_from_directory
 app = Flask(__name__)
 
-@app.route('/')
-def hello_world():
-    return render_template('bootstrap.html')
+@app.route("/", methods=["GET"])
+def main():
+    return render_template('index.html')
 
-@app.route('/recommender')
-def show_recommender():
-    user_input = list(request.args.to_dict().items())
-    try:
-        recommendation = get_ml_recommendations(user_input)
-    except(IndexError):
-        return render_template('error.html')
-    return render_template('data.html', data=recommendation)
+@app.route("/chart", methods=["GET"])
+def new():
+    return render_template('charts.html')
 
-@app.route('/train')
-def train_nmf():
-    retrain_nmf()
-    return render_template('retrain.html')
+@app.route("/model_info", methods=["GET"])
+def other():
+    return render_template('model_info.html')

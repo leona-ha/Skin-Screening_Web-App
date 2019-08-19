@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Include little icon in the link -->
+    <link rel="shortcut icon" href="static/assets/favicon.ico" crossorigin="anonymous" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/custom.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <script type="text/javascript" src="static/js/classes.js"></script> 
+    <script type="text/javascript" src="static/js/main.js"></script>
+
+
+    <title>Mole Detector</title>
+  </head>
+
+  <body onload="loadModel()">
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-10 col-xl-9 mx-auto">
+            <div class="card card-signin flex-row my-5">
+              <div class="card-img-left d-none d-md-flex">
+                 <!-- Background image for card set in CSS! -->
+              </div>
+              <div class="card-body">
+                <h5 class="card-title text-center font-weight-bold">Mole Detector</h5>
+                <div class="row text-center font-italic">Please enter 3 exemplary movies and rate them on a scale <br> from 1 to 5!</div>
+                <br>
+                <div id="progress-box" style="display: none; text-align: center;">
+                  <img src="static/assets/loading.gif" id="model-load" width="50px" />
+                  <p style="color: black; font-size: small;">Loading model...</p>
+                </div>
+                  <hr>
+                  <label for="select-file-image">
+                    Select Image
+                  </label>
+                  <input id="select-file-image" type="file" class="btn btn-sm btn-primary btn-block text-uppercase" style="display: none;" onchange="upload()">
+
+                  <div class="output">
+                    <div class="out-box" id="test-image-box" style="display: none;">
+                      <img id='test-image' style="max-width: 250px"/>
+                    </div>
+                    <div id="progress-box-prediction" style="display: none; text-align: center;">
+                      <img src="static/assets/loading.gif" id="model-load" width="50px" />
+                    </div>
+                    <div class="out-box" id="predict-box" style="display: none;">
+                      <p id="prediction"></p>
+                      <p><b style="color: #000000; font-size: 14px;">Top-5 Predictions</b></p>
+                      <ul id="predict-list">
+                      </ul>
+                    </div>
+                  </div>
+
+                  <hr>
+
+
+                  <button id="predict-button" onclick="predict()" class="btn btn-lg btn-primary btn-block text-uppercase" >Predict</button>
+
+                <br>
+                <form action="/train">
+                  <button class="btn btn-sm btn-info btn-block text-uppercase" type="submit">Retrain My Model</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </body>
+      </html>
