@@ -5,10 +5,10 @@ app = Flask(__name__)
 def main():
     return render_template('index.html')
 
-@app.route("/chart", methods=["GET"])
+@app.route("/charts", methods=["GET"])
 def new():
     return render_template('charts.html')
 
-@app.route("/model_info", methods=["GET"])
+@app.route("/info", methods=["GET"])
 def other():
     return render_template('model_info.html')
