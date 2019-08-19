@@ -2,11 +2,11 @@ let model
 
 async function loadModel() {
 	console.log("model loading..")
-	loader = document.getElementById("progress-box")
-	loader.style.display = "block"
+	// loader = document.getElementById("progress-box")
+	// loader.style.display = "block"
 	model = await tf.loadLayersModel('http://127.0.0.1:5000/static/model_old/model.json')
 	modelCombined = await tf.loadLayersModel('http://127.0.0.1:5000/static/model/model.json')
-	loader.style.display = "none"
+	// loader.style.display = "none"
 	console.log("model loaded..")
 }
 
@@ -28,20 +28,33 @@ function renderImage(file) {
 
 async function predict() {
 	console.log("start prediting")
+
+
+	const gender = document.getElementById("gender").value
+	const age = document.getElementById("age").value
+
+	if (gender === "" || age === "") {
+		alert("Please select gender and age")
+		return
+	}
+	if (model == undefined) {
+		alert("Please wait until the model is loaded")
+		return
+	}
+	if (document.getElementById("test-image-box").style.display == "none") {
+		alert("Please select an image first")
+		return
+	}
+
 	loader = document.getElementById("progress-box-prediction")
 	loader.style.display = "block"
 	console.log(loader.style)
 
-	if (model == undefined) {
-		alert("Please load the model first..")
-	}
-	if (document.getElementById("test-image-box").style.display == "none") {
-		alert("Please select an image first")
-	}
-
-	let image  = document.getElementById("test-image");
+	const scaledAge = Math.round(age/85 * 100) / 100
+	console.log(scaledAge)
+	let image  = document.getElementById("test-image")
 	let tensorImg = preprocessImage(image)
-	let tensorDem = tf.tensor2d([0.1, 1.], [1,2])
+	let tensorDem = tf.tensor2d([scaledAge, gender], [1,2])
 
 	let predictionsOld = await model.predict(tensorImg).data()
 	let resultOld = Array.from(predictionsOld)

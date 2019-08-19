@@ -46,6 +46,14 @@
                     Upload Image
                   </label>
                   <input id="select-file-image" type="file" class="btn btn-sm btn-primary btn-block text-uppercase" style="display: none;" onchange="upload()">
+                 
+                  <select class="form-control" id="gender">
+                    <option value="" disabled selected>Select gender</option>
+                    <option value="1.0">Female</option>
+                    <option value="0.0">Male</option>
+                  </select>
+
+                  <input type="number" id="age" max="85" min="0" placeholder="Age" class="form-control">
 
                   <div class="output">
                     <div class="out-box" id="test-image-box" style="display: none;">
