@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="static/css/custom.css" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
-    <script type="text/javascript" src="static/js/classes.js"></script> 
+    <script type="text/javascript" src="static/js/classes.js"></script>
     <script type="text/javascript" src="static/js/main.js"></script>
 
 
-    <title>Mole Detector</title>
+    <title>SkinCheck</title>
   </head>
 
   <body onload="loadModel()">
@@ -26,16 +26,24 @@
                  <!-- Background image for card set in CSS! -->
               </div>
               <div class="card-body">
-                <h5 class="card-title text-center font-weight-bold">Mole Detector</h5>
-                <div class="row text-center font-italic">Please enter 3 exemplary movies and rate them on a scale <br> from 1 to 5!</div>
+                <h5 class="card-title text-center font-weight-bold">SkinCheck</h5>
+                <div class="row text-center">Welcome to SkinCheck, your AI-driven dermatologist! <br>
+                  Please upload an image of your skin lesion! Make sure, that the lesion is centrally located and clearly identifiable. <br>
+                  <hr>
+                  Attention: The app is in research state and does not (yet) substitute for a face to face consultation.
+                </div>
                 <br>
+                <hr>
+                <div class="row text-center">To get information about the diagnoses and the underlying data press "View Data"! <br>
+                To get information about the Artificial Neural Network press "Meet the Dermatologist"
+                </div>
                 <div id="progress-box" style="display: none; text-align: center;">
                   <img src="static/assets/loading.gif" id="model-load" width="50px" />
                   <p style="color: black; font-size: small;">Loading model...</p>
                 </div>
                   <hr>
                   <label for="select-file-image">
-                    Select Image
+                    Upload Image
                   </label>
                   <input id="select-file-image" type="file" class="btn btn-sm btn-primary btn-block text-uppercase" style="display: none;" onchange="upload()">
 
