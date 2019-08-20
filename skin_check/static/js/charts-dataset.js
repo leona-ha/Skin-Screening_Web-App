@@ -9,6 +9,9 @@ function drawCharts() {
   var layout = {
     title: {
       text:'Pie Chart',
+      font: {
+        color: '#007BFF'
+      }
     },
     height: 400,
     width: 500
@@ -32,7 +35,10 @@ function drawCharts() {
   var data = [trace1, trace2];
   var layout = {
     title: {
-      text:'Plot Title',
+      text:'Line Chart',
+      font: {
+        color: '#007BFF'
+      }
     },
     xaxis: {
       title: {
@@ -42,11 +48,6 @@ function drawCharts() {
     yaxis: {
       title: {
         text: 'y Axis',
-        //font: {
-         // family: 'Courier New, monospace',
-         // size: 18,
-         // color: '#7f7f7f'
-        //}
       }
     }
   }
@@ -68,7 +69,10 @@ function drawCharts() {
   var data = [trace1, trace2];
   var layout = {
     title: {
-      text:'Plot Title',
+      text:'Bar Chart',
+      font: {
+        color: '#007BFF'
+      }
     },
     barmode: 'group'
   }

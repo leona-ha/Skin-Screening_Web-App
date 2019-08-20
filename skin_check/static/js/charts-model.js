@@ -8,7 +8,12 @@ function drawCharts() {
     }
     data = [trace1]
     layout = {
-      title: 'Confusion Matrix', 
+      title: {
+        text:'Confusion Matrix',
+        font: {
+          color: '#007BFF'
+        }
+      },
       xaxis: {title: 'Predicted value'}, 
       yaxis: {title: 'Real value'}, 
       annotations: [
