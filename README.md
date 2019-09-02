@@ -42,6 +42,8 @@ For Hyperparameter-Finetuning, I applied **Cyclical Learning Rates** and the **O
 
 The (for now) final model was converted into TensorFlow.js format and integrated into a simple web-framework using Flask and Bootstrap. I created two additional pages containing visualisations of the data and the model's performance made with Plotly. So far, the web-app is only locally hosted.
 
+<img width="892" alt="skincheck" src="https://user-images.githubusercontent.com/50407361/64121956-92087500-cda0-11e9-8a36-e44186e1953f.png">
+
 ## Future Improvements
 
 The unbalanced classes in the HAM10000 dataset are a challenging task that apparently wasn't solved by simply augmenting the underrepresented categories. There are, however, several strategies left that I might try out to address this difficulty, like:
