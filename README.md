@@ -13,10 +13,12 @@ This project aims to provide a web-application that classifies uploaded images o
 6. Benign Keratosis (bkl)
 7. Vascular lesions (vasc)
 
-![Diagnostic Images]
-(https://challenge2018.isic-archive.com/wp-content/uploads/2018/04/task3.png)
+![Diagnostic Images](https://challenge2018.isic-archive.com/wp-content/uploads/2018/04/task3.png)
 
-For this project, I used the HAM10000 ("Human against machine with 10000 images) dataset, a collection of 10015 dermatoscopic images that were made publibly available for the ISIC challenge, to train an artifical neural network to diagnose the pigmented skin lesions. Since the risk of skin cancer increases with age and is higher in men, I included age and gender to improve accuracy.
+
+For this project, I used the HAM10000 ("Human against machine with 10000 images) dataset, a collection of 10015 dermatoscopic images that were made publibly available for the ISIC challenge, to train an artifical neural network to diagnose the pigmented skin lesions.
+Since the risk of skin cancer increases with age and is higher in men, I included age and gender to improve accuracy.
+
 **Please note:** Although I achieved a categorical accuracy of around 81%, the final model is heavily biased towards Nevi and thus should not (yet) be used for diagnostic purposes.
 
 ## About the dataset
