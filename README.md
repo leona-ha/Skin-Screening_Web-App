@@ -24,17 +24,30 @@ Since the risk of skin cancer increases with age and is higher in men, I include
 ## How did I approach this project?
 
 ### 1. Do some preprocessing
-The distribution of image labels in the HAM10000 dataset are supposed to reflect the real-world setting. Thus, there's a strong categorical imbalance with around 6000 images showing benign melanocytic nevi and only 100-1000 images in the remaining categories.
-To counteract class imbalance I did heavy image augmentation using Keras ImageDataGenerator:
-<img width="733" alt="augmentation" src="https://user-images.githubusercontent.com/50407361/64116724-6206a500-cd93-11e9-8411-6a4e5ae14a7f.png">
 
+The distribution of image labels in the HAM10000 dataset are supposed to reflect the real-world setting. Thus, there's a strong categorical imbalance with around 6000 images showing benign melanocytic nevi and only 100-1000 images in the remaining categories.
+To counteract class imbalance I did heavy image augmentation using **Keras ImageDataGenerator:**
+<img width="733" alt="augmentation" src="https://user-images.githubusercontent.com/50407361/64116724-6206a500-cd93-11e9-8411-6a4e5ae14a7f.png">
 
 
 ### 2. Build the model(s)
 
-### 3. Create a web-application using Flask and TensorflowJS
+With the web-application in mind, I decided to apply transfer learning using MobileNet, a convolutional neural network that uses depthwise separable convolutions and is thus more leightweight than other pretrained models (~ 4.5 million parameters; https://arxiv.org/pdf/1704.04861.pdf).
+
+To feed the auxiliary input (age and gender) into the model and concatenate it with the extracted image features I had to write a custom image data generator (see Combined_model.ipynb).
+
+For Hyperparameter-Finetuning, I applied **Cyclical Learning Rates** and the **One Cycle policy** (https://arxiv.org/pdf/1506.01186.pdf), a relatively new approach that improved my model's performance and that I'll definitely check out further. Instead of choosing a fixed or decreasing learning rate, you define a **minimum** and **maximum** LR. By allowing the learning rate to cyclically oscillate between the two values you avoid local minima and saddle points.
+
+### 3. Create a web-application using Flask and TensorFlow.js
+
+The (for now) final model was converted into TensorFlow.js format and integrated into a simple web-framework using Flask and Bootstrap. I created two additional pages containing visualisations of the data and the model's performance made with Plotly. So far, the web-app is only locally hosted.
 
 ## Future Improvements
+
+The unbalanced classes in the HAM10000 dataset are a challenging task that apparently wasn't solved by simply augmenting the underrepresented categories. There are, however, several strategies left that I might try out to address this difficulty, like:
+- apply a loss function that punishes harder on false predictions in underrepresented classes
+- downsampling overrepresented classes
+- using model ensembles (this would however not be suited for web-applications or mobile devices)
 
 ## Original Data Source
 
