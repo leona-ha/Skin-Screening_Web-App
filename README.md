@@ -1,4 +1,4 @@
-# Skin-Check: A deep-learning based Web-Application for Skin Cancer Detection
+# Final Project: SkinCheck - A deep-learning based Web-Application for Skin Cancer Detection
 
 Skin Cancer is one of the most common forms of cancer, with increasing incidence. In Germany, it makes up one third of all cancer diagnoses (https://www.tk.de/techniker/gesundheit-und-medizin/praevention-und-frueherkennung/hautkrebs-fruehererkennung/hautkrebs-wie-hoch-ist-das-risiko-2015296). While Basal Cell Carcinoma (BCC) is the most frequent type of skin cancer, Melanoma is considered the most dangerous one. In both cases, however, early diagnosis is crucial to facilitate successfull treatment.
 
@@ -19,9 +19,22 @@ This project aims to provide a web-application that classifies uploaded images o
 For this project, I used the HAM10000 ("Human against machine with 10000 images) dataset, a collection of 10015 dermatoscopic images that were made publibly available for the ISIC challenge, to train an artifical neural network to diagnose the pigmented skin lesions.
 Since the risk of skin cancer increases with age and is higher in men, I included age and gender to improve accuracy.
 
-**Please note:** Although I achieved a categorical accuracy of around 81%, the final model is heavily biased towards Nevi and thus should not (yet) be used for diagnostic purposes.
+**Please note:** Although I achieved a categorical accuracy of around 81%, the final model is heavily biased towards Nevi, lacks the appropriate sensitivity and specificity and thus should not (yet) be used for diagnostic purposes.
 
-## About the dataset
+## How did I approach this project?
+
+### 1. Do some preprocessing
+The distribution of image labels in the HAM10000 dataset are supposed to reflect the real-world setting. Thus, there's a strong categorical imbalance with around 6000 images showing benign melanocytic nevi and only 100-1000 images in the remaining categories.
+To counteract class imbalance I did heavy image augmentation using Keras ImageDataGenerator:
+<img width="733" alt="augmentation" src="https://user-images.githubusercontent.com/50407361/64116724-6206a500-cd93-11e9-8411-6a4e5ae14a7f.png">
+
+
+
+### 2. Build the model(s)
+
+### 3. Create a web-application using Flask and TensorflowJS
+
+## Future Improvements
 
 ## Original Data Source
 
