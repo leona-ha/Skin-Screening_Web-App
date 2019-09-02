@@ -35,7 +35,7 @@ function drawCharts() {
   var data = [trace1, trace2];
   var layout = {
     title: {
-      text:"Proportion of diagnosis per gender in %",
+      text:'Proportion of diagnostic label per gender in %',
       font: {
         color: '#007BFF'
       }

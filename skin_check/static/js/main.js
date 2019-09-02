@@ -1,10 +1,9 @@
-let model
+
 
 async function loadModel() {
 	console.log("model loading..")
 	// loader = document.getElementById("progress-box")
 	// loader.style.display = "block"
-	model = await tf.loadLayersModel('http://127.0.0.1:5000/static/model_old/model.json')
 	modelCombined = await tf.loadLayersModel('http://127.0.0.1:5000/static/model/model.json')
 	// loader.style.display = "none"
 	console.log("model loaded..")
@@ -45,7 +44,7 @@ async function predict() {
 		alert("Please select gender and age")
 		return
 	}
-	if (model == undefined) {
+	if (modelCombined == undefined) {
 		alert("Please wait until the model is loaded")
 		return
 	}
@@ -61,19 +60,6 @@ async function predict() {
 	let image  = document.getElementById("test-image")
 	let tensorImg = preprocessImage(image)
 	let tensorDem = tf.tensor2d([scaledAge, gender], [1,2])
-
-	let predictionsOld = await model.predict(tensorImg).data()
-	let resultOld = Array.from(predictionsOld)
-		.map(function (p, i) {
-			return {
-				probability: p,
-				className: IMAGENET_CLASSES[i]
-			};
-		}).sort(function (a, b) {
-			return b.probability - a.probability
-		}).slice(0, 5)
-		console.log(resultOld)
-
 
 	let predictions = await modelCombined.predict([tensorImg, tensorDem]).data()
 	let results = Array.from(predictions)
