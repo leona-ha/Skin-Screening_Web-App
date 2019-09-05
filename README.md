@@ -19,7 +19,7 @@ This project aims to provide a web-application that classifies uploaded images o
 For this project, I used the HAM10000 ("Human against machine with 10000 images) dataset, a collection of 10015 dermatoscopic images that were made publibly available for the ISIC challenge, to train an artifical neural network to diagnose the pigmented skin lesions.
 Since the risk of skin cancer increases with age and is higher in men, I included age and gender to improve accuracy.
 
-**Please note:** Although I achieved a categorical accuracy of around 81%, the final model is heavily biased towards Nevi, lacks the appropriate sensitivity and specificity and thus should not (yet) be used for diagnostic purposes.
+**Please note:** Although I achieved a categorical accuracy of around 81%, the final model is heavily biased towards Nevi, lacks the appropriate sensitivity and specificity and thus should not (yet) be used for diagnostic purposes. Click [here](http://leonaha.pythonanywhere.com/) to try out my model!
 
 ## How did I approach this project?
 
@@ -42,7 +42,7 @@ For Hyperparameter-Finetuning, I applied **Cyclical Learning Rates** and the **O
 
 The (for now) final model was converted into TensorFlow.js format and integrated into a simple web-framework using Flask and Bootstrap. I created two additional pages containing visualisations of the data and the model's performance made with Plotly.
 
-Click [here](http://leonaha.pythonanywhere.com/) to visit my web-app! 
+Click [here](http://leonaha.pythonanywhere.com/) to visit my web-app!
 
 <img width="892" alt="skincheck" src="https://user-images.githubusercontent.com/50407361/64121956-92087500-cda0-11e9-8a36-e44186e1953f.png">
 
