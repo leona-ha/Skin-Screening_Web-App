@@ -40,7 +40,9 @@ For Hyperparameter-Finetuning, I applied **Cyclical Learning Rates** and the **O
 
 ### 3. Create a web-application using Flask and TensorFlow.js
 
-The (for now) final model was converted into TensorFlow.js format and integrated into a simple web-framework using Flask and Bootstrap. I created two additional pages containing visualisations of the data and the model's performance made with Plotly. So far, the web-app is only locally hosted.
+The (for now) final model was converted into TensorFlow.js format and integrated into a simple web-framework using Flask and Bootstrap. I created two additional pages containing visualisations of the data and the model's performance made with Plotly.
+
+Click [here](http://leonaha.pythonanywhere.com/) to visit my web-app! 
 
 <img width="892" alt="skincheck" src="https://user-images.githubusercontent.com/50407361/64121956-92087500-cda0-11e9-8a36-e44186e1953f.png">
 
