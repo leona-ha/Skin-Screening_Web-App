@@ -53,7 +53,7 @@ networkx==2.3
 notebook>=6.1.5
 np-utils==0.5.10.0
 numexpr==2.6.9
-numpy==1.16.4
+numpy==1.22.0
 nvidia-ml-py3==7.352.0
 opencv-contrib-python==4.2.0.32
 packaging==19.1
